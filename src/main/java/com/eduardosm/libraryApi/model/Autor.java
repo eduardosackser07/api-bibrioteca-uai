@@ -12,8 +12,6 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "autor", schema = "public")
-@Getter
-@Setter
 @ToString
 @Data
 public class Autor{
@@ -73,5 +71,15 @@ public class Autor{
 
     public void setLivros(List<Livro> livros) {
         this.livros = livros;
+    }
+
+    @Override
+    public String toString() {
+        return "Autor{" +
+                "nacionalidade='" + nacionalidade + '\'' +
+                ", data=" + data +
+                ", nome='" + nome + '\'' +
+                ", id=" + id +
+                '}';
     }
 }
