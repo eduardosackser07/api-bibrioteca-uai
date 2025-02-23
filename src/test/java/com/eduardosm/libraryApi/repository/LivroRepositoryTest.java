@@ -9,6 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -116,4 +117,40 @@ class LivroRepositoryTest {
 
         System.out.println("Autor: "+ livro.getAutor().getNome());
     }
+
+    @Test
+    void buscarLivroPorTitulo(){
+        List<Livro> lista = repository.findByTitulo("harry penis");
+
+        lista.forEach(System.out::println);
+    }
+
+    @Test
+    void buscarLivroPorIsbn(){
+        List<Livro> lista = repository.findByIsbn("1234567");
+
+        lista.forEach(System.out::println);
+    }
+
+    @Test
+    void buscarLivroPorTituloEisbn(){
+        Livro livro = repository.findByTituloAndIsbn("harry penis","1234567");
+
+        System.out.println(livro.toString());
+    }
+
+    @Test
+    void listarLivrosComQueryJPQL(){
+        List<Livro> lista = repository.listarTodosOrdenadoPorTitulo();
+
+        lista.forEach(System.out::println);
+    }
+
+    @Test
+    void listarAutoresDosLivrosJPQL(){
+        List<Autor> lista = repository.listarAutoresDosLivros();
+
+        lista.forEach(System.out::println);
+    }
+
 }

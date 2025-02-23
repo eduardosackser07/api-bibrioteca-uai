@@ -30,7 +30,7 @@ public class Autor{
     @Column(name = "nacionalidade", nullable = false, length = 50)
     private String nacionalidade;
 
-    @OneToMany(mappedBy = "autor")
+    @OneToMany(mappedBy = "autor", fetch = FetchType.LAZY)
     private List<Livro> livros;
 
     public UUID getId() {

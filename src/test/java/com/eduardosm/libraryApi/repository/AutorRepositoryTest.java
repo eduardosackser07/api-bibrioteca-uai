@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.eduardosm.libraryApi.repository.AutorRepository;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -117,7 +118,17 @@ public class AutorRepositoryTest {
 
         livroRepository.saveAll(autor.getLivros());
 
+    }
 
+    @Test
+    void listarLivrosDoAutor(){
+        UUID id = UUID.fromString("29399422-5aac-4365-ac93-2372b258bb36");
+        Autor autor = repository.findById(id).get();
+
+        List<Livro> livrosLista = livroRepository.findByAutor(autor);
+        autor.setLivros(livrosLista);
+
+        autor.getLivros().forEach(System.out::println);
     }
 }
 
