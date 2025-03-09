@@ -27,11 +27,11 @@ class LivroRepositoryTest {
     void salvarTest(){
         Livro livro = new Livro();
 
-        livro.setTitulo("harry penis e o caraio secreto");
+        livro.setTitulo("sexo eu e marilene parte 2");
         livro.setData_publicacao(LocalDate.of(1997, 10, 31));
-        livro.setPreco(59.99);
-        livro.setGenero(GeneroLivro.FANTASIA);
-        livro.setIsbn("1234568");
+        livro.setPreco(199.99);
+        livro.setGenero(GeneroLivro.ROMANCE);
+        livro.setIsbn("1234538");
 
         Autor autor = autorRepository.findById(
                 UUID.fromString("6de7c2cc-eb50-4459-9427-571fc7dc5368"))
@@ -151,6 +151,31 @@ class LivroRepositoryTest {
         List<Autor> lista = repository.listarAutoresDosLivros();
 
         lista.forEach(System.out::println);
+    }
+
+    @Test
+    void listarPorGeneroQueryParam(){
+        var resultado = repository.findByGenero(GeneroLivro.FANTASIA, "data_publicacao");
+
+        resultado.forEach(System.out::println);
+
+    }
+
+    @Test
+    void listarPorGeneroPositionalParam(){
+        var resultado = repository.findByGeneroPositionalParam(GeneroLivro.FANTASIA, "data_publicacao");
+
+        resultado.forEach(System.out::println);
+    }
+
+    @Test
+    void deletePorGeneroTeste(){
+        repository.deleteByGenero(GeneroLivro.ROMANCE);
+    }
+
+    @Test
+    void updateDataPublicacaoTest(){
+        repository.updateData_publicacao(LocalDate.of(2007,12,10));
     }
 
 }
