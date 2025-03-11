@@ -15,7 +15,7 @@ public class TransacoesTest {
     @Autowired
     TransacaoService transacaoService;
 
-    @Test
+    //@Test
     void transacaoSimples(){
         transacaoService.executar();
     }

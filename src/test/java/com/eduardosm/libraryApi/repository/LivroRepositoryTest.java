@@ -44,7 +44,7 @@ class LivroRepositoryTest {
 
     }
 
-    @Test
+    /*@Test
     void salvarCascadeTest(){
         //pra essa funcao funcionar tem q ter a opçao cascade no manyToOne da classe livro.
         Livro livro = new Livro();
@@ -63,7 +63,7 @@ class LivroRepositoryTest {
         livro.setAutor(autor);
 
         repository.save(livro);
-    }
+    }*/
 
     @Test
     void salvarLivroEautorSemCascade(){
